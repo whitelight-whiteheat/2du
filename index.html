@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="todo-container">
+        <header class="header">
+            <h1>To-Do List</h1>
+            <input type="text" id="filter" placeholder="Search tasks" class="filter-input">
+            <div class="controls">
+                <select id="sort" class="sort-select">
+                    <option value="alphabetically">Sort Alphabetically</option>
+                    <option value="by-date">Sort by Date</option>
+                </select>
+                <input type="date" id="task-date" class="date-picker">
+                <button id="add-task-btn" class="add-btn">Add Task</button>
+            </div>
+        </header>
+
+        <ul id="todo-list" class="todo-list"></ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

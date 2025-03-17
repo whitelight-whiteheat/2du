@@ -1,0 +1,63 @@
+<!--
+    Upcoming:
+[] Shows upcoming tasks with specified dates with each
+[] You can and remove said tasks when needed
+[] Can also edit by clicking on said task
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2DU - Upcoming Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <button class="sidebar-toggle" aria-label="Toggle Sidebar">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="logo-container">
+                <a href="index.html" class="logo-link">
+                    <h1>2DU</h1>
+                    <span class="logo-subtitle">...or not 2DU</span>
+                </a>
+            </div>
+            <nav>
+                <a href="index.html"><i class="fas fa-inbox"></i> Today</a>
+                <a href="upcoming.html" class="active"><i class="fas fa-calendar"></i> Upcoming</a>
+                <a href="completed.html"><i class="fas fa-check-circle"></i> Completed</a>
+                <a href="search.html"><i class="fas fa-search"></i> Search</a>
+                <a href="tagfilter.html"><i class="fas fa-tags"></i> Tags</a>
+                <a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <main>
+                <section id="upcoming-section">
+                    <div class="dashboard-header">
+                        <div class="header-content">
+                            <h1>Upcoming Tasks</h1>
+                            <p class="date-display">Future tasks and deadlines</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div id="upcoming-tasks">
+                            <!-- Tasks will be grouped by date here -->
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p>&copy; 2025 2DU. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2DU - Projects</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <button class="sidebar-toggle" aria-label="Toggle Sidebar">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="logo-container">
+                <a href="index.html" class="logo-link">
+                    <h1>2DU</h1>
+                    <span class="logo-subtitle">...or not 2DU</span>
+                </a>
+            </div>
+            <nav>
+                <a href="index.html" data-tooltip="Today"><i class="fas fa-inbox"></i> <span>Today</span></a>
+                <a href="#" id="calendar-link" data-tooltip="Calendar"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a>
+                <a href="upcoming.html" data-tooltip="Upcoming"><i class="fas fa-calendar"></i> <span>Upcoming</span></a>
+                <a href="completed.html" data-tooltip="Completed"><i class="fas fa-check-circle"></i> <span>Completed</span></a>
+                <a href="search.html" data-tooltip="Search"><i class="fas fa-search"></i> <span>Search</span></a>
+                <a href="tagfilter.html" data-tooltip="Tags"><i class="fas fa-tags"></i> <span>Tags</span></a>
+                <a href="projects.html" class="active" data-tooltip="Projects"><i class="fas fa-project-diagram"></i> <span>Projects</span></a>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <main>
+                <section id="projects-section">
+                    <div class="dashboard-header">
+                        <div class="header-content">
+                            <h1>Projects</h1>
+                            <p class="date-display"></p>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div id="projects-container">
+                            <!-- Projects will be listed here -->
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p>&copy; 2025 2DU. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Calendar Modal -->
+    <div id="calendar-modal" class="modal">
+        <div class="modal-content calendar-modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-calendar-alt"></i> Calendar View</h2>
+                <button class="close-modal" title="Close modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev-month" class="calendar-nav-btn" title="Previous month"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="calendar-month-year"></h3>
+                    <button id="next-month" class="calendar-nav-btn" title="Next month"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-weekdays">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                <div id="calendar-days" class="calendar-days"></div>
+                <div id="calendar-tasks" class="calendar-tasks">
+                    <h4>Tasks for <span id="selected-date"></span></h4>
+                    <ul id="date-tasks-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>2DU - Task Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <button class="sidebar-toggle" aria-label="Toggle Sidebar">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="logo-container">
+                <a href="index.html" class="logo-link">
+                    <h1>2DU</h1>
+                    <span class="logo-subtitle">...or not 2DU</span>
+                </a>
+            </div>
+            <nav>
+                <a href="index.html" class="active" data-tooltip="Today"><i class="fas fa-inbox"></i> <span>Today</span></a>
+                <a href="#" id="calendar-link" data-tooltip="Calendar"><i class="fas fa-calendar-alt"></i> <span>Calendar</span></a>
+                <a href="upcoming.html" data-tooltip="Upcoming"><i class="fas fa-calendar"></i> <span>Upcoming</span></a>
+                <a href="completed.html" data-tooltip="Completed"><i class="fas fa-check-circle"></i> <span>Completed</span></a>
+                <a href="search.html" data-tooltip="Search"><i class="fas fa-search"></i> <span>Search</span></a>
+                <a href="tagfilter.html" data-tooltip="Tags"><i class="fas fa-tags"></i> <span>Tags</span></a>
+                <a href="projects.html" data-tooltip="Projects"><i class="fas fa-project-diagram"></i> <span>Projects</span></a>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <main>
+                <section id="dashboard">
+                    <div class="dashboard-header">
+                        <div class="header-content">
+                            <h1>Today</h1>
+                            <p class="date-display"></p>
+                        </div>
+                        <button id="quick-add-btn" class="quick-add-btn" title="Add task">
+                            <i class="fas fa-plus"></i>
+                            Add Task
+                        </button>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card tasks-overview">
+                            <div class="tasks-header">
+                                <h3><i class="fas fa-calendar-day"></i> Tasks Overview</h3>
+                                <div class="tasks-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span id="completed-count">0</span> completed
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span id="remaining-count">0</span> remaining
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="tasks-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="tasks-progress-fill"></div>
+                                </div>
+                            </div>
+                            <ul id="today-tasks" class="tasks-list">
+                                <li class="empty-state">
+                                    <i class="fas fa-check"></i>
+                                    No tasks scheduled for today
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Task Creation Modal -->
+            <div id="task-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-plus"></i> Create New Task</h2>
+                        <button class="close-modal" title="Close modal"><i class="fas fa-times"></i></button>
+                    </div>
+                    <form id="task-form">
+                        <div class="form-group">
+                            <label for="task-title">Task Title</label>
+                            <input type="text" id="task-title" name="task-title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="task-date">Due Date</label>
+                            <input type="date" id="task-date" name="task-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="task-tags">Tags</label>
+                            <input type="text" id="task-tags" name="task-tags">
+                        </div>
+                        <div class="form-group">
+                            <label for="task-description">Description</label>
+                            <textarea id="task-description" name="task-description"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary close-modal">Cancel</button>
+                            <button type="submit" class="btn-primary">Create Task</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <footer>
+                <p>&copy; 2025 2DU. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Calendar Modal -->
+    <div id="calendar-modal" class="modal">
+        <div class="modal-content calendar-modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-calendar-alt"></i> Calendar View</h2>
+                <button class="close-modal" title="Close modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev-month" class="calendar-nav-btn" title="Previous month"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="calendar-month-year"></h3>
+                    <button id="next-month" class="calendar-nav-btn" title="Next month"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-weekdays">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                <div id="calendar-days" class="calendar-days"></div>
+                <div id="calendar-tasks" class="calendar-tasks">
+                    <h4>Tasks for <span id="selected-date"></span></h4>
+                    <ul id="date-tasks-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
